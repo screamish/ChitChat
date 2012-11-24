@@ -7,8 +7,11 @@
         }
     </text>
 } else {
-    <ul>
-        <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
-        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
-    </ul>
+    <form class="navbar-form pull-right">
+        <input name="textinput1" type="email" placeholder="Email" class="span2">
+        <input name="textinput2" type="password" placeholder="Password" class="span2">
+        <button class="btn">
+            Sign in
+        </button>
+    </form>
 }
