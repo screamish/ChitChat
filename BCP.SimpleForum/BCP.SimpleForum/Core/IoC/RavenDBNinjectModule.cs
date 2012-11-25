@@ -20,11 +20,12 @@ namespace BCP.SimpleForum.Core.IoC
             {
                 NonAdminHttp.EnsureCanListenToWhenInNonAdminContext(8080);
                 var documentStore = new EmbeddableDocumentStore { DataDirectory = "App_Data", UseEmbeddedHttpServer = true, };
+                documentStore.Initialize();
 
                 Glimpse.RavenDb.Profiler.AttachTo(documentStore);
                 Glimpse.RavenDb.Profiler.HideFields("PasswordHash", "PasswordSalt");
 
-                return documentStore.Initialize();
+                return documentStore;
             })
             .InSingletonScope();
 

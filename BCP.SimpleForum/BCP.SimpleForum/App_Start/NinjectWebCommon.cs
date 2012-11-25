@@ -55,6 +55,7 @@ namespace BCP.SimpleForum.App_Start
         private static void RegisterServices(IKernel kernel)
         {
             kernel.Load(new RavenDBNinjectModule());
+            kernel.Load(new FlexMembershipNinjectModule());
         }        
     }
 }
