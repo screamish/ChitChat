@@ -1,0 +1,13 @@
+﻿@model BCP.SimpleForum.Models.LoginModel
+
+@using (Html.BeginForm("Login", "Account", FormMethod.Post, new {@class = ""}))
+{
+    @Html.ValidationSummary()
+    
+    @Html.AntiForgeryToken()
+    @Html.TextBoxFor(m => m.UserName, new { @class = "span2", placeholder = "Email address" })
+    @Html.TextBoxFor(m => m.Password, new { @class = "span2", placeholder = "Password" })
+    <button class="btn">
+        Sign in
+    </button>
+}
