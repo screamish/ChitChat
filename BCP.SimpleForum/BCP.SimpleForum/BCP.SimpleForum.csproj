@@ -261,6 +261,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Core\IoC\FlexMembershipNinjectModule.cs" />
     <Compile Include="Core\IoC\RavenDBNinjectModule.cs" />
     <Compile Include="Global.asax.cs">
@@ -388,6 +389,7 @@
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Shared\_Title.cshtml" />
     <Content Include="Views\Account\SimpleLogin.cshtml" />
+    <Content Include="Views\Profile\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
