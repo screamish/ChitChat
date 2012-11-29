@@ -21,7 +21,7 @@ namespace BCP.SimpleForum.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            var user = _session.Load<User>(User.Identity.Name);
+            var user = _session.Query<User>().Single(u => u.Username == User.Identity.Name);
 
             return View(user);
         }
