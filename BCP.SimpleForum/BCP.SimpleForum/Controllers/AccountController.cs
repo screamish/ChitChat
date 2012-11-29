@@ -74,6 +74,7 @@ namespace BCP.SimpleForum.Controllers
                 {
                     var user = new User { Username = model.UserName, Password = model.Password };
                     _membershipProvider.CreateAccount(user);
+                    ViewBag.FlashSuccess = "Your account has been created.";
                     return RedirectToAction("Index", "Home");
                 }
                 catch (FlexMembershipException e)
