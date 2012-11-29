@@ -18,8 +18,8 @@ namespace BCP.SimpleForum.Core.IoC
             Bind<IDocumentStore>()
             .ToMethod(context =>
             {
-                NonAdminHttp.EnsureCanListenToWhenInNonAdminContext(8080);
-                var documentStore = new EmbeddableDocumentStore { DataDirectory = "App_Data", UseEmbeddedHttpServer = true, };
+                //NonAdminHttp.EnsureCanListenToWhenInNonAdminContext(8080);
+                var documentStore = new EmbeddableDocumentStore { DataDirectory = "App_Data" };
                 documentStore.Initialize();
 
                 Glimpse.RavenDb.Profiler.AttachTo(documentStore);

@@ -28,6 +28,12 @@ namespace BCP.SimpleForum.Controllers
             return View();
         }
 
+        [AllowAnonymous]
+        public ActionResult SimpleLogin()
+        {
+            return PartialView(new LoginModel());
+        }
+
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]

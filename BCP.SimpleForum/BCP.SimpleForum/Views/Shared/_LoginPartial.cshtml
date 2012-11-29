@@ -1,6 +1,4 @@
-﻿@model BCP.SimpleForum.Models.LoginModel
-
-@if (Request.IsAuthenticated) {
+﻿@if (Request.IsAuthenticated) {
     <text>
         Hello, @Html.ActionLink(User.Identity.Name, "Manage", "Account", routeValues: null, htmlAttributes: new { @class = "username", title = "Manage" })!
         @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" })) {
@@ -9,13 +7,5 @@
         }
     </text>
 } else {
-    using (Html.BeginForm("Login", "Account", FormMethod.Post, new {@class = "navbar-form pull-right"}))
-    {
-        @Html.AntiForgeryToken()
-        @Html.TextBoxFor(m => m.UserName, new { @class = "span2", placeholder = "Email address" })
-        @Html.TextBoxFor(m => m.Password, new { @class = "span2", placeholder = "Password" })
-        <button class="btn">
-            Sign in
-        </button>
-    }
+    Html.RenderAction("SimpleLogin", "Account");
 }

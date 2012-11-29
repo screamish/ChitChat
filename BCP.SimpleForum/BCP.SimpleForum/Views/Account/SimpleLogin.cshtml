@@ -1,0 +1,15 @@
+﻿@model BCP.SimpleForum.Models.LoginModel
+
+@{
+    Layout = null;
+}
+
+@using (Html.BeginForm("Login", "Account", FormMethod.Post, new {@class = "navbar-form pull-right"}))
+{
+    @Html.AntiForgeryToken()
+    @Html.TextBoxFor(m => m.UserName, new { @class = "span2", placeholder = "Email address" })
+    @Html.TextBoxFor(m => m.Password, new { @class = "span2", placeholder = "Password" })
+    <button class="btn">
+        Sign in
+    </button>
+}
