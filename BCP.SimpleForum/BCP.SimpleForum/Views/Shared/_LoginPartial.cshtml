@@ -1,10 +1,8 @@
 ﻿@if (Request.IsAuthenticated) {
     <div class="pull-right">
-        Hello, @Html.ActionLink(User.Identity.Name, "Index", "Profile")!
-        @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" })) {
-            @Html.AntiForgeryToken()
-            <a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
-        }
+        <p class="navbar-text">
+            Hello, @Html.ActionLink(User.Identity.Name, "Index", "Profile")! <a href="#modalLogout" data-toggle="modal">Log off</a>
+        </p>
     </div>
 } else {
     Html.RenderAction("SimpleLogin", "Account");
