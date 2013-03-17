@@ -15,19 +15,18 @@ namespace BCP.SimpleForum.Core.IoC
     {
         public override void Load()
         {
-            Bind<IDocumentStore>()
-            .ToMethod(context =>
-            {
-                //NonAdminHttp.EnsureCanListenToWhenInNonAdminContext(8080);
-                var documentStore = new EmbeddableDocumentStore { DataDirectory = "App_Data" };
-                documentStore.Initialize();
+            Bind<IDocumentStore>().ToMethod(context =>
+                                    {
+                                        //NonAdminHttp.EnsureCanListenToWhenInNonAdminContext(8080);
+                                        var documentStore = new EmbeddableDocumentStore { DataDirectory = "App_Data" };
+                                        documentStore.Initialize();
 
-                Glimpse.RavenDb.Profiler.AttachTo(documentStore);
-                Glimpse.RavenDb.Profiler.HideFields("PasswordHash", "PasswordSalt");
+                                        Glimpse.RavenDb.Profiler.AttachTo(documentStore);
+                                        Glimpse.RavenDb.Profiler.HideFields("PasswordHash", "PasswordSalt");
 
-                return documentStore;
-            })
-            .InSingletonScope();
+                                        return documentStore;
+                                    })
+                                    .InSingletonScope();
 
             Bind<IDocumentSession>().ToMethod(context => context.Kernel.Get<IDocumentStore>().OpenSession()).InRequestScope();
         }
