@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Mvc;
 using BCP.SimpleForum.Controllers;
 using FlexProviders.Membership;
 using NUnit.Framework;
@@ -20,7 +21,7 @@ namespace BCP.SimpleForum.Test
         public void Setup()
         {
             var fixture = new Fixture();
-            fixture.Customize(new AutoMoqCustomization());
+            fixture.Customize(new WebModelCustomization());
 
             _controller = fixture.Create<AccountController>();
         }
@@ -31,6 +32,23 @@ namespace BCP.SimpleForum.Test
             var result = _controller.Login();
 
             Assert.That(result, Is.Not.Null);
+        }
+    }
+
+    internal class WebModelCustomization : CompositeCustomization
+    {
+        internal WebModelCustomization() : base( new MvcCustomization(),
+                                                 new AutoMoqCustomization() )
+        {
+        }
+
+        private class MvcCustomization : ICustomization
+        {
+            public void Customize(IFixture fixture)
+            {
+                fixture.Customize<ControllerContext>(c => c
+                    .Without(x => x.DisplayMode));
+            }
         }
     }
 }
