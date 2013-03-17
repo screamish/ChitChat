@@ -4,6 +4,7 @@ using FlexProviders.Membership;
 using FlexProviders.Raven;
 using FlexProviders.Roles;
 using Ninject.Modules;
+using Ninject.Web.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,11 +26,11 @@ namespace BCP.SimpleForum.Core.IoC
             //x.For<IApplicationEnvironment>().Singleton().Use<AspnetEnvironment>();
             //x.For<ISecurityEncoder>().Singleton().Use<DefaultSecurityEncoder>();
 
-            Bind<IFlexMembershipProvider>().To<FlexMembershipProvider>().InThreadScope();
-            Bind<IFlexRoleProvider>().To<FlexRoleProvider>().InThreadScope();
-            Bind<IFlexUserStore>().To<FlexMembershipUserStore<User, Role>>().InThreadScope();
+            Bind<IFlexMembershipProvider>().To<FlexMembershipProvider>();
+            Bind<IFlexRoleProvider>().To<FlexRoleProvider>();
+            Bind<IFlexUserStore>().To<FlexMembershipUserStore<User, Role>>();
 
-            Bind<IFlexOAuthProvider>().To<FlexMembershipProvider>().InThreadScope();
+            Bind<IFlexOAuthProvider>().To<FlexMembershipProvider>();
 
             Bind<IApplicationEnvironment>().To<AspnetEnvironment>().InSingletonScope();
             Bind<ISecurityEncoder>().To<DefaultSecurityEncoder>().InSingletonScope();
